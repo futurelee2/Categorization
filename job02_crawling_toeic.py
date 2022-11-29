@@ -30,7 +30,7 @@ for i in range(1, pages[1]+1):               #page
         reviews.append(review)
         driver.back()
         print('디버그 ',i,j-5)
-    if i % 5 == 0:  # j가 10에 배수가 될때마다 한번씩 한다. 10페이지마다 한번씩 저장하겠다.
+    if i % 10 == 0:  # 10페이지마다 데이터 저장
         df_section_reviews = pd.DataFrame(reviews, columns=['reviews'])
         df_section_reviews['category'] = category[1]
         df_reviews = pd.concat([df_reviews, df_section_reviews], ignore_index=True)
