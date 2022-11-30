@@ -4,12 +4,12 @@ from keras.models import *
 from keras.layers import *
 
 X_train, X_test, Y_train, Y_test = np.load(
-    './models/news_data_max_20_wordsize_12027.npy', allow_pickle=True)
+    './models/hackers_reviews_max_5114_wordsize_17498.npy', allow_pickle=True)
 print(X_train.shape, Y_train.shape)
 print(X_test.shape, Y_test.shape)
 
 model = Sequential()
-model.add(Embedding(12027, 300, input_length=20))         #라벨은 서로 계산해봐야 의미가 없는 것.
+model.add(Embedding(17498, 300, input_length=5114))         #라벨은 서로 계산해봐야 의미가 없는 것.
                                                         #형태소를 숫자 라벨로 바꾼 것. 토큰라이저
                                                         #라벨 > 계산을 할 수 있게 만드는 것이 임베딩
 #300차원이라는 것 => 단어하나당 300개의 좌표가 만들어진다는 말
@@ -26,12 +26,12 @@ model.add(GRU(64, activation='tanh'))
 model.add(Dropout(0.3))
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
-model.add(Dense(6, activation='softmax'))
+model.add(Dense(4, activation='softmax'))
 model.summary()
 
 model.compile(loss='categorical_crossentropy', optimizer='adam',
               metrics=['accuracy'])
-fit_hist = model.fit(X_train, Y_train, batch_size=128,
+fit_hist = model.fit(X_train, Y_train, batch_size=32,
                      epochs=10, validation_data=(X_test, Y_test))
 
 model.save('./models/news_category_classfication_model_{}.h5'.format(

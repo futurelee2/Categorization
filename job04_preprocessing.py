@@ -14,12 +14,12 @@ from keras.utils import to_categorical
 import pickle
 
 pd.set_option('display.unicode.east_asian_width', True)
-df = pd.read_csv('./crawling_data/naver_news_titles_20221124.csv')
+df = pd.read_csv('./crawling_data/hackers_reviews.csv')
 print(df.head())
 print(df.category.value_counts())
 df.info()
 
-X = df['titles']       #컬럼명을 써준거다.
+X = df['reviews']       #컬럼명을 써준거다.
 Y = df['category']     #이것도
 
 encoder = LabelEncoder()
@@ -36,6 +36,7 @@ print(onehot_Y[:5])
 #형태소 단위로 잘라주기
 #명사 하나만 뽑아내는 것 : 형태소
 #okt : 자바언어
+
 
 okt = Okt()
 okt_morph_X = okt.morphs(X[1111], stem=True)
@@ -72,7 +73,7 @@ wordsize = len(token.word_index) + 1      #0까지 포함한 갯수
 # print(wordsize)
 
 #토큰 저장
-with open('./models/news_token.pickle', 'wb') as f:
+with open('./models/hackers_token.pickle', 'wb') as f:
     pickle.dump(token, f)
 
 
@@ -91,7 +92,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(
 print(X_train.shape, Y_train.shape, X_test.shape, Y_test.shape)
 
 xy = X_train, X_test, Y_train, Y_test
-np.save('./models/news_data_max_{}_wordsize_{}.npy'.format(max_len, wordsize), xy)
+np.save('./models/hackers_reviews_max_{}_wordsize_{}.npy'.format(max_len, wordsize), xy)
 
 
 
