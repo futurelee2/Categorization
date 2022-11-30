@@ -15,8 +15,8 @@ options = webdriver.ChromeOptions()
 options.add_argument('lang=kr_KR')
 driver = webdriver.Chrome('./chromedriver', options=options)
 df_reviews = pd.DataFrame()
+reviews = []
 for i in range(1, pages[0]+1):              #page
-    reviews = []
     url = 'https://land.hackers.com/site/?st=guide&idx=50&etype=eland&tree_no=312&sub_no=318&sub_menu_no=803&page={}&islnb=y&division=1'.format(i)
     driver.get(url)
     time.sleep(0.2)
