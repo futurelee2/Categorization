@@ -13,9 +13,10 @@ options = webdriver.ChromeOptions()
 options.add_argument('lang=kr_KR')
 driver = webdriver.Chrome('./chromedriver', options=options)
 df_reviews = pd.DataFrame()
+reviews = []
 for i in range(1, pages[1]+1):               #page
 # for i in range(1, pages[1]+1):
-    reviews = []
+
     url = 'https://champ.hackers.com/?r=champstudy&c=community%2Fcm_toeic%2Ftoeic_review&func=&order=favorite&me=&qna_id=&anker=Y&p={}&file=https%3A%2F%2Fwww.youtube.com%2Fembed%2FmNvYB1kXxlY&img=%2F%2Fgscdn.hackers.co.kr%2Fchamp%2Fimg%2Fplayer%2Fhacsong.png&width=250px&height=150&s_key=1&s_value='.format(i)
     driver.get(url)
     time.sleep(0.2)
