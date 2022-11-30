@@ -15,7 +15,6 @@ print(df.head())
 
 df.info()
 
-df.to_csv('./crawling_data/naver_news_titles_{}.csv'.format(
-    datetime.datetime.now().strftime('%Y%m%d')), index=False)
+df.to_csv('./crawling_data/hackers_reviews.csv', index=False)
 
 
