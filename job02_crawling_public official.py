@@ -15,8 +15,8 @@ options = webdriver.ChromeOptions()
 options.add_argument('lang=kr_KR')
 driver = webdriver.Chrome('./chromedriver', options=options)
 df_reviews = pd.DataFrame()
+reviews = []
 for i in range(1, 290):              #page
-    reviews = []
     url = 'https://gosi.hackers.com/html/mmove.htm?id=exam_passnote_new&m=&cate=&cate2=&cate3=&cate4=&cate5=&cate6=&idx=&user_id=&search_opt=&search_txt=&hb_year=&page={}'.format(i)
     driver.get(url)
     time.sleep(0.2)
