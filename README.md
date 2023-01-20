@@ -21,7 +21,7 @@ Selenium으로 사이트 데이터 크롤링
 용량이 100MB 이상이라,
 
 
-**GIT commit-push** 안되어
+**Git commit-push** 안되어
 
 
 구글로 주고 받은 파일 있음
